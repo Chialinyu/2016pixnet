@@ -61,7 +61,7 @@
       API Document: https://developer.pixnet.pro/#!/doc/pixnetApi/blogArticlesId
       */
       var articleObj = {};
-      $.getJSON( 'https://emma.pixnet.cc/blog/articles/' + articleID + '?user=' + userName + '&format=json' +'&client_id=' + "2f1d4f6e22b98393c370eac3fed8c3b6", function ( data ) {
+      $.getJSON( 'https://emma.pixnet.cc/blog/articles/' + articleID + '?user=' + userName + '&format=json' , function ( data ) {
         var itemCount = 0;
         reqItems.forEach( function (d) {
           itemCount++;
