@@ -53,7 +53,7 @@
     function getArticle ( _userName, _articleID, _reqItems ) {
       var userName = _userName || 'gogocucumber';
       var articleID = _articleID || '87865809';
-      var reqItems = _reqItems || ['title','site_category','address','hits.total','info.comments_count','images.length','link','body'];
+      var reqItems = _reqItems || ['title','site_category','address','location.geojson.latitude','location.geojson.longitude','hits.total','info.comments_count','images.length','link','body'];
       /*
       reqItems nead to check the orginal API of pixnet for the item name.
       If you want to get the article.id, the reqItem is simplfied to id, article.hits.total to hits.total ... and so on.
@@ -65,17 +65,6 @@
         var itemCount = 0;
         reqItems.forEach( function (d) {
           itemCount++;
-          if( d == 'body' ){
-            articleObj[d] = eval('data.article.'+d).replace(/(<([^>]+)>)/ig,'')
-                                                   .replace(/&nbsp/ig,'')
-                                                   .replace(/&gt/ig,'')
-                                                   .replace(/&lt/ig,'')
-                                                   .replace(/(\r\n|\n|\r)/gm, '');
-          }
-          else{
-            articleObj[d] = eval('data.article.'+d);
-          }
-
           if( itemCount == reqItems.length ){
             allArticle.push(articleObj);
             current++;
